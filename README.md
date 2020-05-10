@@ -27,8 +27,14 @@
 * NoSQL databases, rather than mapping objects to tables and rows, serialize the entire object graph, and store the result. The benefits of this approach, at least initially, are simplicity and performance.
 * The lack of locks or transactions or a fixed schema also makes NoSQL databases amenable to scaling across many machines, supporting very large datasets.
 * NoSQL databases typically do not enforce ACID, which means they have both performance and scalability benefits over relational databases. They're well suited to extremely large datasets and objects that are not well suited to storage in normalized table structures.
+* The xUnit framework works well and is what all of the ASP.NET Core and EF Core tests are written in.
+* Do most of your testing of controller actions using functional tests and the TestServer class.
+* Azure Cosmos DB offers the best querying functionality, and is the recommended option for large numbers of JSON-based documents that must support querying.
+* Azure Storage Bus offers more flexibility and is the recommended service for non-trivial messaging
+
 
 ## References
-* [Architect Modern Web Applications with ASP.NET Core and Azure](https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/)
+* [Architect Modern Web Applications with ASP.NET Core and Azure](https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/) - OK
 * [.NET Microservices: Architecture for Containerized .NET Applications](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/)
 * [Real-World ASP.NET Core MVC Filters](https://docs.microsoft.com/en-us/archive/msdn-magazine/2016/august/asp-net-core-real-world-asp-net-core-mvc-filters)
+* [Run a basic web application in Azure](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/basic-web-app)
