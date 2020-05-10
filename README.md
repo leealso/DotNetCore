@@ -20,9 +20,16 @@
   .Include("Items.Products");
   .Include(blog => blog.Posts).ThenInclude(post => post.Author)
 ```
-
+* Explicit loading allows you to load additional data into an entity that has already been retrieved. Since this involves a separate request to the database, it's not recommended for web applications, which should minimize the number of database round trips made per request.
+* A common problem in domain models is that they expose collection navigation properties as publicly accessible list types. This allows any collaborator to manipulate the contents of these collection types, which may bypass important business rules related to the collection, possibly leaving the object in an invalid state. The solution to this is to expose read-only access to related collections, and explicitly provide methods defining ways in which clients can manipulate them `IReadOnlyCollection`.
+* Another way in which you can improve your domain model is through the use of value objects for types that lack identity and are only distinguished by their properties.
+* In cases of temporary unavailability, applications can use retry logic to avoid raising an exception. This technique is commonly referred to as connection resiliency. You can implement your own retry with exponential backoff technique by attempting to retry with an exponentially increasing wait time, until a maximum retry count has been reached.
+* NoSQL databases, rather than mapping objects to tables and rows, serialize the entire object graph, and store the result. The benefits of this approach, at least initially, are simplicity and performance.
+* The lack of locks or transactions or a fixed schema also makes NoSQL databases amenable to scaling across many machines, supporting very large datasets.
+* NoSQL databases typically do not enforce ACID, which means they have both performance and scalability benefits over relational databases. They're well suited to extremely large datasets and objects that are not well suited to storage in normalized table structures.
 
 ## References
 * [Architect Modern Web Applications with ASP.NET Core and Azure](https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/)
 * [.NET Microservices: Architecture for Containerized .NET Applications](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/)
 * [Real-World ASP.NET Core MVC Filters](https://docs.microsoft.com/en-us/archive/msdn-magazine/2016/august/asp-net-core-real-world-asp-net-core-mvc-filters)
+IReadOnlyCollection
